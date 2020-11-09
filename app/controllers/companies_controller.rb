@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
+      @company.precompile
       redirect_to companies_path, notice: "Saved"
     else
       render :new
@@ -26,11 +27,20 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
+      @company.precompile
       redirect_to companies_path, notice: "Changes Saved"
     else
       render :edit
     end
-  end  
+  end 
+
+  def destroy
+    if @company.destroy
+      redirect_to companies_path, notice: "Deleted Successfully"
+    else
+      render :index
+    end
+  end
 
   private
 
@@ -42,6 +52,7 @@ class CompaniesController < ApplicationController
       :zip_code,
       :phone,
       :email,
+      :theme_color,
       :owner_id,
       services: []
     )

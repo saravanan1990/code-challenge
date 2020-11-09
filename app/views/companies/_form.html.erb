@@ -53,7 +53,7 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
+          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com", :pattern => "[A-Z0-9._%a-z\-]*[@]getmainstreet.com", :title =>"Please add email with domain @getmainstreet.com" %>
         </div>
       </div>
     </div>
@@ -65,6 +65,17 @@
       <div class="col-lg offset-lg-1">
           <div data-controller="services" class="form-group">
             <%= f.select :services, options_for_select(["Interior Painting", "Commercial Painting", "Exterior Painting"], @company.services), {include_blank: true, required: false}, multiple: true, "data-target": "services.select2", class: "form-control" %>
+          </div>
+      </div>
+    </div>
+
+    <div class="row my-lg-3">
+      <div class="col-lg-3">
+        <label><strong>Theme Color</strong><br><small class="text-muted">Select a color for this company</small></label>
+      </div>
+      <div class="col-lg offset-lg-1">
+          <div data-controller="services" class="form-group">
+            <%= f.color_field :theme_color %>
           </div>
       </div>
     </div>
