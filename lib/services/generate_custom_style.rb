@@ -54,6 +54,7 @@ module Services
     end
 
     def asset_source
+      env = Sprockets::Railtie.build_environment Rails.application
       if env.find_asset(filename)
         env.find_asset(filename).source
       else
