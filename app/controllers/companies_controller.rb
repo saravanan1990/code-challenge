@@ -15,6 +15,8 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
+      generate_stylesheet = Services::GenerateCustomStyle.new(@company.id)
+      generate_stylesheet.compile
       redirect_to companies_path, notice: "Saved"
     else
       render :new
@@ -26,6 +28,8 @@ class CompaniesController < ApplicationController
 
   def update
     if @company.update(company_params)
+      generate_stylesheet = Services::GenerateCustomStyle.new(@company.id)
+      generate_stylesheet.compile
       redirect_to companies_path, notice: "Changes Saved"
     else
       render :edit
@@ -50,6 +54,7 @@ class CompaniesController < ApplicationController
       :zip_code,
       :phone,
       :email,
+      :theme_color,
       :owner_id,
       services: []
     )
