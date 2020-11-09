@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: code_challenge_production
-  # username: code_challenge
-  # password: <%= ENV['CODE_CHALLENGE_DATABASE_PASSWORD'] %>
+  username: code_challenge
+  password: <%= ENV['CODE_CHALLENGE_DATABASE_PASSWORD'] %>
