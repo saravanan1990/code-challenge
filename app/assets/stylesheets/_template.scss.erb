@@ -1,1 +1,12 @@
+<% 
+  if defined?(company) && company.present?
+    company = company
+  else 
+    company = Services::ColorGenerator.new(Company.new).get_color_scheme
+  end
+%>
+$theme_color: <%= company.theme_color %>;
 
+body {
+  background-color: $theme_color !important;
+}
