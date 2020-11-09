@@ -11,4 +11,9 @@ class Company < ApplicationRecord
     self.state = zip_code_hash.blank? ? "" : zip_code_hash[:state_name]
   end
 
+  def precompile
+    generate_stylesheet = Services::GenerateCustomStyle.new(self.id)
+    generate_stylesheet.compile
+  end
+
 end
