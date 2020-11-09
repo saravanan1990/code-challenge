@@ -5,8 +5,9 @@
       <%= link_to "< Companies", companies_path %>
     </div>
     <div class="col text-right">
-      <%= link_to "Edit", edit_company_path %>
-    </div>
+      <%= link_to 'Delete', company_path(@company), method: :delete, data: { confirm: 'Are you sure want to delete the Company?', id: "Delete" }, class: "btn btn-danger" %>
+      <%= link_to "Edit", edit_company_path, class: "btn btn-primary" %>
+    </div><br/><br/>
   </div>
   <div class="bg-success">
     <div class="container p-5 text-white">
